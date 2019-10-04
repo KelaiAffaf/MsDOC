@@ -78,11 +78,11 @@ const StyledLink = styled(Link)`
 const StyledIn =styled.input`
 background-color:#E2007A;
 `;
-const DocStarted = () => {
+const assistant = () => {
     return (
         <Layout>
         <StyledStep>
-        <h1> Setup your account now </h1>
+        <h1> Assistant informations  </h1>
             <StyledContent>
                 <StyledImg>
                     <img src={require("../images/doc.svg")}/>
@@ -91,8 +91,8 @@ const DocStarted = () => {
                     
                     <form>
                         
-                       <Inpout  Label="Nom"></Inpout>
-                       <Inpout  Label="Prenom"></Inpout>
+                            <Inpout  Label="Nom"></Inpout>
+                            <Inpout  Label="Prenom"></Inpout>
                         
                         <Inpout Label ="Date of birth" />
                         <Inpout Label="Sexe" />
@@ -116,4 +116,4 @@ const DocStarted = () => {
     );
 };
 
-export default DocStarted;
+export default assistant;

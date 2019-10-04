@@ -5,6 +5,8 @@ import Card from '../components/Inscription/card.js'
 import { gray } from '../styles/utilities/Colors'
 import Layout from '../components/layout';
 
+import Calander from '../components/Agenda/calandar'
+
 const StyledGetStarted = styled.div`
     background: white;
     padding: 6rem;
@@ -47,13 +49,13 @@ const Start = () => (
                     <Card icon={require("../images/doc.svg")}
                         type="Doctor"></Card> 
                 </StyledLink>
-                <StyledLink to="/getting-started-assistant">
+                <StyledLink to="/assistant">
                     <Card icon={require("../images/voice.svg")}
                         type="Assistant"></Card>
                 </StyledLink>
             </Cards>  
         </StyledGetStarted>
-    
+      <Calander></Calander>
     </Layout>
 )
 

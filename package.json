@@ -18,10 +18,13 @@
     "gatsby-plugin-styled-components": "^3.1.8",
     "gatsby-source-filesystem": "^2.1.28",
     "gatsby-transformer-sharp": "^2.2.19",
+    "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
+    "styled-button-component": "^4.0.0",
     "styled-components": "^4.4.0",
     "styled-dropdown-component": "^4.0.0",
     "styled-react-modal": "^2.0.0"
