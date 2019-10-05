@@ -1,59 +1,67 @@
-import React from 'react'
+import React , {Component} from 'react'
 
-const getInitialState =()=>{
-    return {
-        selectedOption: 'option1'
-      };
-
-}
-
-const handleOptionChange=(changeEvent)=> {
-    this.setState({
-      selectedOption: changeEvent.target.value
-    });
-  },
-
-  const  handleFormSubmit = (formSubmitEvent)=> {
-    formSubmitEvent.preventDefault();
-
-    console.log('You have selected:', this.state.selectedOption);
-  },
-
-const RadioButton = ()=>(
-
-
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-12">
-
-            <form onSubmit={this.handleFormSubmit}>
-              <div className="radio">
-                <label>
-                  <input type="radio" value="option1" checked={this.state.selectedOption === 'option1'} onChange={this.handleOptionChange} />
-                  Option 1
-                </label>
-              </div>
-              <div className="radio">
-                <label>
-                  <input type="radio" value="option2" checked={this.state.selectedOption === 'option2'} onChange={this.handleOptionChange}/>
-                  Option 2
-                </label>
-              </div>
-              <div className="radio">
-                <label>
-                  <input type="radio" value="option3" checked={this.state.selectedOption === 'option3'} onChange={this.handleOptionChange}/>
-                  Option 3
-                </label>
-              </div>
-              <button className="btn btn-default" type="submit">Save</button>
-            </form>
-
-          </div>
-        </div>
-      </div>
-    );
+import styled from 'styled-components'
+  const StyledInput=styled.input`
+   height:25px;
+   width:30px;
+   color: #999;
+   `;
+ 
+   const ParalelInput = styled.div`
+    display: flex;
+    flex-direction:row;
+    
+    width:300px;
+    
+    justify-content: flex-end;
+    input{
+        width:15%;
+    }
+    h3{
+      color:#999; 
+      font-size:18px;
+      font-weight:normal;
+      
+    }
+`;
+export default class RadioButton extends React.Component {
+   
   
+    constructor() {
+      super();
+      this.state = {
+        selectedOption: ''
+      };
+    this.radioChange = this.radioChange.bind(this);
+  }
+  
+    radioChange(e) {
+      this.setState({
+        selectedOption: e.currentTarget.value
+      });
+    }
+  
+   
+  
+  render() {
+    //const { checked } = this.state;
+    return (
+      <div>
+        <ParalelInput>
+        
+        <StyledInput type="radio"
+               value="Yes"
+               checked={this.state.selectedOption === "Yes"}
+               onChange={this.radioChange} /><h3>Yes</h3>
 
-
-
-export default RadioButton;
+        <StyledInput type="radio"
+               value="No"              
+               checked={this.state.selectedOption === "No"}
+               onChange={this.radioChange}/><h3>No</h3>
+        </ParalelInput>
+        
+        
+      </div> 
+    );
+  }
+}

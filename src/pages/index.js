@@ -6,7 +6,7 @@ import Image from "../components/image"
 import SEO from "../components/seo"
 import styled from 'styled-components'
 
-
+import Scrollbar from 'react-custom-scrollbars'
 
 const InContaine=styled.div`
 display: grid;
