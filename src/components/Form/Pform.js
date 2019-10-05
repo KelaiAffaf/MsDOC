@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import './Pform.css'
 import Inpout from '../Inscription/Inpout'
-import SlectOption from './selectOption'
+
 import '../Inscription/Inpout.css'
 import RadioButton from './RadioButton'
-import Scrollbar from 'react-custom-scrollbars'
+
 const StyledImg = styled.div`
     width: 50%;
     padding: 0.5rem;
