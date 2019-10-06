@@ -23,7 +23,7 @@ width:100%;
 `;
 const Layout2 = ({ children }) => {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query SiteTitle {
       site {
         siteMetadata {
           title

@@ -9,10 +9,10 @@ const StyledTextArea = styled.textarea`
         height: 12rem;
     }
     
-    width: 581px;
-    height: 273px;
+    width: 450px;
+    height: 200px;
     
-
+    
     background: #FFFFFF;
     border: 1px solid #000000;
     box-sizing: border-box;
