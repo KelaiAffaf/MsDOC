@@ -6,6 +6,7 @@ import Image from "../components/image"
 import SEO from "../components/seo"
 import styled from 'styled-components'
  import {navigate} from 'gatsby'
+ import 'antd/dist/antd.css';
 
 import Scrollbar from 'react-custom-scrollbars'
 

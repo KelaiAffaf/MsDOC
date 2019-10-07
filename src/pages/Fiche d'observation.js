@@ -16,18 +16,21 @@ import DateFnsUtils from '@date-io/date-fns';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
-import Input from '@material-ui/core/Input';
+//import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
+import { DatePicker } from 'antd';
 
+import { Input } from 'antd';
 
 import {
     MuiPickersUtilsProvider,
     KeyboardTimePicker,
     KeyboardDatePicker,
   } from '@material-ui/pickers';
+  
 
 const Container=styled.div`
     display: grid;
@@ -58,6 +61,7 @@ const Container=styled.div`
     
   `;
   const Item2=styled.div`
+      
       grid-area: 1/3/2/12;
       height:200px;
       width:700px; 
@@ -148,16 +152,16 @@ const useStyles = makeStyles(theme => ({
     root: {
       display: 'flex',
       flexWrap: 'wrap',
-      
+      padding: '0 20px',
     },
     margin: {
-      margin: theme.spacing(1),
+      margin: theme.spacing(0),
     },
     withoutLabel: {
-      marginTop: theme.spacing(3),
+      marginTop: theme.spacing(1),
     },
     textField: {
-      flexBasis: 200,
+      flexBasis:50,
       color:'red',
     },
   }));
@@ -166,6 +170,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function Fiche(){
     
+
+  const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
+
+                function onChange(date, dateString) {
+                console.log(date, dateString);
+                }
     const classes = useStyles();
     
     const [values, setValues] = React.useState({
@@ -195,21 +205,11 @@ export default function Fiche(){
             </StyledImg>
             </Item1>
             <Item2>
-                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                        <Grid container justify="space-around">
-                                        <KeyboardDatePicker
-                                            margin="normal"
-                                            id="date-picker-dialog"
-                                            label="Date picker dialog"
-                                            format="MM/dd/yyyy"
-                                            value={selectedDate}
-                                            onChange={handleDateChange}
-                                            KeyboardButtonProps={{
-                                                'aria-label': 'change date',
-                                            }}
-                                            />
-                                            </Grid>
-                        </MuiPickersUtilsProvider>
+
+                            <Input    placeholder="Basic usage" />
+                            
+                            <DatePicker onChange={onChange} />
+                        
             </Item2>
            
 
@@ -240,33 +240,8 @@ export default function Fiche(){
             <img src={require("../images/man-user.svg")}></img>
             </StyledImg2>
 
-            <FormControl className={clsx(classes.margin, classes.withoutLabel, classes.textField)}>
-                    <Input
-                    id="adornment-weight"
-                    value={values.weight}
-                    onChange={handleChange('weight')}
-                    endAdornment={<InputAdornment position="end">Kg</InputAdornment>}
-                    aria-describedby="weight-helper-text"
-                    inputProps={{
-                        'aria-label': 'weight',
-                    }}
-                    />
-                    <FormHelperText id="weight-helper-text">Weight</FormHelperText>
-                </FormControl>
-
-                <FormControl className={clsx(classes.margin, classes.withoutLabel, classes.textField)}>
-                    <Input
-                    id="adornment-Taille"
-                    value={values.Taille}
-                    onChange={handleChange('Taille')}
-                    endAdornment={<InputAdornment position="end">cm</InputAdornment>}
-                    aria-describedby="Taille-helper-text"
-                    inputProps={{
-                        'aria-label': 'Taille',
-                    }}
-                    />
-                    <FormHelperText id="Taille-helper-text">Taille</FormHelperText>
-                </FormControl>
+            
+                   
                 
             </Item7>
             <Item8>
