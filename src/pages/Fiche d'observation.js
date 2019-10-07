@@ -6,6 +6,10 @@ import { gray } from '../styles/utilities/Colors'
 import Layout2 from '../components/Layout/layout2'
 import Checkbox from '../components/Form/SimpleCheckBox'
 
+import  styles from './fich.css'
+import '~antd/dist/antd.less'; // Import Ant Design styles by less entry
+import 'fich.less'; //myless fichier to overwrite 
+
 import Pform from '../components/Form/Pform'
 import TextArea from '../components/Form/TextArea'
 import InputAdornments from '../components/Form/InputAdornments'
@@ -206,7 +210,7 @@ export default function Fiche(){
             </Item1>
             <Item2>
 
-                            <Input    placeholder="Basic usage" />
+                            <Input  className= {styles.inpout}  placeholder="Basic usage" />
                             
                             <DatePicker onChange={onChange} />
                         
