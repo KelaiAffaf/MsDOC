@@ -6,9 +6,9 @@ import { gray } from '../styles/utilities/Colors'
 import Layout2 from '../components/Layout/layout2'
 import Checkbox from '../components/Form/SimpleCheckBox'
 
-import  styles from './fich.css'
-import '~antd/dist/antd.less'; // Import Ant Design styles by less entry
-import 'fich.less'; //myless fichier to overwrite 
+//import  styles from './fich.css'
+//import '~antd/dist/antd.less'; // Import Ant Design styles by less entry
+//import styles from './fich.less'; //myless fichier to overwrite 
 
 import Pform from '../components/Form/Pform'
 import TextArea from '../components/Form/TextArea'
@@ -26,9 +26,10 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import { DatePicker } from 'antd';
-
-import { Input } from 'antd';
-
+import Input from '@material-ui/core/Input';
+//import { Input } from 'antd';
+import Numeric from '../components/info/NumericInput'
+import Poidsin from '../components/info/poidsInput.js/poidsin'
 import {
     MuiPickersUtilsProvider,
     KeyboardTimePicker,
@@ -66,12 +67,23 @@ const Container=styled.div`
   `;
   const Item2=styled.div`
       
+      display: flex;
+      flex-direction: row;
+      
       grid-area: 1/3/2/12;
       height:200px;
       width:700px; 
-      margin-top: 60px;
-     
+      margin-top: 30px;
       margin-left:50px;
+     Input {
+      
+      margin-top: 20px;
+     }
+     .Motif{
+      color:#09E200;
+      margin-bottom: 56px;
+     }
+
   `;
   const Item3=styled.div`
     grid-area: 2/1/2/6;
@@ -79,7 +91,7 @@ const Container=styled.div`
     width:560px; 
     margin-left:50px;
     margin-right:5px;
-    background-color: DodgerBlue;
+   
 `;
 
 const Item4=styled.div `
@@ -87,13 +99,13 @@ const Item4=styled.div `
     width:560px; 
     height:300px; 
     margin-left:5px;
-   background-color: DodgerBlue;
+  
 `;
 const Item5=styled.div`
     grid-area: 3/1/3/6;
     width:560px; 
     height:300px; 
-    background-color: DodgerBlue;
+    
     margin-left:50px;
     
 `;
@@ -102,12 +114,12 @@ const Item6 =styled.div`
     grid-area: 3/6/3/12;
     width:560px;
     height:300px; 
-    background-color: DodgerBlue;
+    
     margin-left:5px;
 `;
 const Item7=styled.div`
     display: flex;
-    background-color: DodgerBlue;
+   
     grid-area: 4/1/4/6;
     width:560px; 
     height:300px; 
@@ -115,6 +127,8 @@ const Item7=styled.div`
 `;
 
 const Item8 =styled.div`
+   display: flex;
+    
     grid-area: 4/6/4/12;
     width:560px;
     height:300px; 
@@ -122,18 +136,19 @@ const Item8 =styled.div`
     
 `;
 const StyledImg = styled.div`
-    width: 50%;
-    padding: 0.5rem;
+    width: 60%;
+    padding: 1rem;
     img{
         width: 100%;
     }
     
 `;
 const StyledImg2 = styled.div`
-    width: 30%;
-    padding: 0.5rem;
+    width: 60%;
+   
     img{
         width: 100%;
+        margin-top: 81px;
     }
     
 `;
@@ -159,18 +174,21 @@ const useStyles = makeStyles(theme => ({
       padding: '0 20px',
     },
     margin: {
-      margin: theme.spacing(0),
+      margin: theme.spacing(1),
     },
     withoutLabel: {
-      marginTop: theme.spacing(1),
+      marginTop: theme.spacing(3),
     },
     textField: {
-      flexBasis:50,
+      flexBasis:150,
       color:'red',
     },
   }));
   
-
+  const putStyle = {
+    width: '260px' 
+    
+  };
 
 export default function Fiche(){
     
@@ -189,6 +207,8 @@ export default function Fiche(){
         weightRange: '',
         Taille:'',
         showPassword: false,
+        PAS:'',
+        PAD:'',
       });
     
       const handleChange = prop => event => {
@@ -201,6 +221,8 @@ export default function Fiche(){
     setSelectedDate(date);
   };
     return (
+
+      <Layout2>
       <Container>
           
             <Item1>
@@ -209,11 +231,33 @@ export default function Fiche(){
             </StyledImg>
             </Item1>
             <Item2>
-
-                            <Input  className= {styles.inpout}  placeholder="Basic usage" />
+            
+            <Input className="Motif" style={{width: 340 }}  placeholder="Motif" />
                             
-                            <DatePicker onChange={onChange} />
-                        
+                            
+
+                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                <Grid container justify="space-around">
+                                
+                                <KeyboardDatePicker  style={{ 
+                                  width: 340 ,
+                                  
+                                
+                              }} 
+                            disableToolbar
+                            variant="inline"
+                            format="MM/dd/yyyy"
+                            margin="normal"
+                            id="date-picker-inline"
+                            
+                            value={selectedDate}
+                            onChange={handleDateChange}
+                            KeyboardButtonProps={{
+                              'aria-label': 'change date',
+                            }}
+                          />
+                         </Grid>
+                       </MuiPickersUtilsProvider>
             </Item2>
            
 
@@ -244,23 +288,92 @@ export default function Fiche(){
             <img src={require("../images/man-user.svg")}></img>
             </StyledImg2>
 
+     <div>     
+      <FormControl className={clsx(classes.margin, classes.withoutLabel, classes.textField)}>
+        <Input  
+          style={{ 
+            width: 200
+        }} 
+          id="adornment-weight"
+          value={values.weight}
+          onChange={handleChange('weight')}
+          endAdornment={<InputAdornment position="end">Kg</InputAdornment>}
+          aria-describedby="weight-helper-text"
+          inputProps={{
+            'aria-label': 'weight',
+          }}
+        />
+        <FormHelperText id="weight-helper-text">Weight</FormHelperText>
+      </FormControl>
             
-                   
+
+      <FormControl className={clsx(classes.margin, classes.withoutLabel, classes.textField)}>
+        <Input  
+          style={{ 
+            width: 200
+        }} 
+          id="adornment-weight"
+          value={values.Taille}
+          onChange={handleChange('Taille')}
+          endAdornment={<InputAdornment position="end">cm</InputAdornment>}
+          aria-describedby="Taille-helper-text"
+          inputProps={{
+            'aria-label': 'Taille',
+          }}
+        />
+        <FormHelperText id="weight-helper-text">Weight</FormHelperText>
+      </FormControl>
+      </div>      
                 
             </Item7>
             <Item8>
 
-        
-            
-      
       <StyledImg2>
             <img src={require("../images/cardiogram_V.svg")}></img>
             </StyledImg2>
 
+            
+     <div>     
+      <FormControl className={clsx(classes.margin, classes.withoutLabel, classes.textField)}>
+        <Input  
+          style={{ 
+            width: 200
+        }} 
+          id="adornment-PAS"
+          value={values.weight}
+          onChange={handleChange('PAS')}
+          endAdornment={<InputAdornment position="end">PAS</InputAdornment>}
+          aria-describedby="PAS-helper-text"
+          inputProps={{
+            'aria-label': 'PAS',
+          }}
+        />
+        <FormHelperText id="PAS-helper-text">PAS</FormHelperText>
+      </FormControl>
+            
+
+      <FormControl className={clsx(classes.margin, classes.withoutLabel, classes.textField)}>
+        <Input  
+          style={{ 
+            width: 200
+        }} 
+          id="adornment-PAD"
+          value={values.PAD}
+          onChange={handleChange('PAD')}
+          endAdornment={<InputAdornment position="end">PAD</InputAdornment>}
+          aria-describedby="PAD-helper-text"
+          inputProps={{
+            'aria-label': 'PAD',
+          }}
+        />
+        <FormHelperText id="PAD-helper-text">PAD</FormHelperText>
+      </FormControl>
+      </div>
+
             </Item8>
             
       </Container>
-      
+      </Layout2>
     );
 
 

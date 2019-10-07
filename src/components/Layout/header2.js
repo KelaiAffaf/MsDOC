@@ -62,7 +62,7 @@ const StyledHeader =styled.div `
         color:black;
         font-weight: 600;
         &:hover{
-            color:#E2007A;
+            color:#09E200;
             cursor: pointer;
         }
         Styledslogo{
@@ -73,9 +73,12 @@ const StyledHeader =styled.div `
 
 `;
 const Styledslogo =styled.h1`
-    font-family:'Josefin Sans' ;
-    color:#E2007A;
+    
     width:100%;
+    h1{
+        font-family:'Josefin Sans' ;
+        color:#09E200;
+    }
 
 
 `;
@@ -94,7 +97,7 @@ const Header2 = () => (
 
       <StyledLogo>
                 <LogoContainer>
-                    <img src={require("../../images/cardiogram.svg")} alt='logo'/>
+                    <img src={require("../../images/cardiogram_V.svg")} alt='logo'/>
                 </LogoContainer>
                 
        </StyledLogo>
@@ -105,6 +108,8 @@ const Header2 = () => (
             <StyledMenu>
                 <nav>
                    <Link to="/"> Home </Link>
+                   <Link to="/"> Enregistrer </Link>
+                   <Link to="/"> Annler </Link>
                     
                 </nav>
             </StyledMenu>

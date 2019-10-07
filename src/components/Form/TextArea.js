@@ -11,7 +11,7 @@ const StyledTextArea = styled.textarea`
     
     width: 450px;
     height: 200px;
-    
+    font-size: 24px;
     
     background: #FFFFFF;
     border: 1px solid #000000;
@@ -22,9 +22,10 @@ const StyledTextArea = styled.textarea`
 
     ::placeholder{
       font-size: 1.6rem;
-      color: black;
+      color: #09E200;
       opacity: 0.6;
       font-weight: 300;
+      
     }
 
     :focus{
