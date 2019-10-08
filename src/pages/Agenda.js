@@ -19,7 +19,8 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
 import styled from 'styled-components'
-import Table from '../components/Agenda/Table'
+import Tableau from '../components/Agenda/Tableau'
+import Calander from '../components/Agenda/calandar'
 
 
 
@@ -65,6 +66,7 @@ const useStyles = makeStyles(theme => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
+    
   },
   drawerPaper: {
     width: drawerWidth,
@@ -142,7 +144,7 @@ export default function Agenda() {
           
         </Toolbar>
       </AppBar>
-      <Drawer  
+      <Drawer   
         className={classes.drawer}
         variant="persistent"
         anchor="left"
@@ -156,24 +158,10 @@ export default function Agenda() {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
+        <Divider  />
+        <Calander></Calander>
         <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+        
       </Drawer>
       <main
         className={clsx(classes.content, {
@@ -181,7 +169,7 @@ export default function Agenda() {
         })}
       >
         <div className={classes.drawerHeader} />
-        <Table></Table>
+        <Tableau ></Tableau>
       </main>
     </div>
   );
